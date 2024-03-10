@@ -29,13 +29,17 @@ Route::get('/ListeChauffeur', [ChauffeurController::class, 'index'])->name('List
 Route::post('/AjouterChauffeur', [ChauffeurController::class, 'Ajouter'])->name('AjouterChauffeur');
 Route::get('/GestionChauffeur', [ChauffeurController::class, 'Gestion'])->name('GestionChauffeur');
 Route::get('/Chauffeur/{id}/details', [ChauffeurController::class, 'Voir'])->name('VoirDetailsChauffeur');
-
+Route::get('/ChauffeurSupprimer', [ChauffeurController::class, 'ChauffeurSupprimer'])->name('ChauffeurSupprimer');
+Route::post('/SupprimerChauffeur/{id}', [ChauffeurController::class, 'SupprimerChauffeur'])->name('SupprimerChauffeur');
+Route::get('/chauffeurDetailsSupprimer/{id}', [ChauffeurController::class, 'VoirDetailsSupprimer'])->name('VoirDetailsSupprimer');
+Route::get('/PageModifierChauffeur/{id}', [ChauffeurController::class, 'PageModifierChauffeur'])->name('PageModifierChauffeur');
+Route::post('/ModifierChauffeur/{id}', [ChauffeurController::class, 'ModifierChauffeur'])->name('ModifierChauffeur');
 //Location
 Route::get('/ListeLocation', [LocationController::class, 'index'])->name('ListeLocation');
 Route::get('/LocationEnCours', [LocationController::class, 'LocationEnCours'])->name('LocationEnCours');
 Route::post('/LouerVoiture', [LocationController::class, 'louervoiture'])->name('LouerVoiture');
 Route::get('/Location/{id}/Details', [LocationController::class, 'DetailsLocation'])->name('DetailsLocation');
-Route::get('/TerminerLocation/{id}/ICI', [LocationController::class, 'TerminerLocation'])->name('TerminerLocation');
+Route::post('/TerminerLocation/{id}', [LocationController::class, 'TerminerLocation'])->name('TerminerLocation');
 
 //Facture
 Route::get('/ListeFacture', [FactureController::class, 'index'])->name('ListeFacture');

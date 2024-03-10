@@ -62,7 +62,18 @@
                 <td>{{ $chauffeur->DateFinEmbauche }}</td>
                 <td>{{ $chauffeur->Salaire }}</td>
                 <td>
-                    <!-- Ajoutez des actions ici si nécessaire -->
+                     <!-- Modifier -->
+            <a href="{{ route('PageModifierChauffeur', ['id' => $chauffeur->id]) }}" class="btn btn-md btn-icon edit-record">
+                <i class="mdi mdi-pencil-outline mdi-20px"></i>
+            </a>
+
+            <!-- Supprimer -->
+            <form action="{{ route('SupprimerChauffeur', ['id' => $chauffeur->id]) }}" method="post">
+                @csrf
+                <button type="submit" class="btn btn-md btn-icon edit-record">
+                    <i class="mdi mdi-delete mdi-20px text-danger"></i>
+                </button>
+            </form>
                 </td>
             </tr>
         @endforeach

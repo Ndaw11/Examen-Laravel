@@ -28,19 +28,21 @@
                 <!-- Afficher les détails de la voiture -->
                 <p class="pb-0">Véhicule: {{ $location->voiture->Marque }} {{ $location->voiture->Model }}</p>
 
-                <h4 class="text-primary mb-1">Durée de Location : {{ $location->DureeJours }} jours</h4>
-                <p class="mb-2 pb-1">Date de Début: {{ $location->DateDebut }}</p>
-
+                <h4 class="text-primary mb-1">Informations</h4>
+                <p class="mb-2 pb-1">Date de Fin: {{ $location->DateFin }}</p>
+                <!-- Afficher les détails du chauffeur -->
+            <p class="mb-2 pb-1">Heure Fin: {{ $location->HeureFin}}</p>
                 <!-- Afficher les détails du client -->
-                <p class="mb-2 pb-1">Client: {{ $location->client->Prenom }} {{ $location->client->Nom }}</p>
-
+                <p class="mb-2 pb-1">Client: {{ $location->client->Prenom }} {{ $location->client->Nom }} {{ $location->client->Telephone }}</p>
                 <!-- Afficher les détails du chauffeur -->
                 <p class="mb-2 pb-1">Chauffeur: {{ $location->chauffeur->Prenom }} {{ $location->chauffeur->Nom }}</p>
-
-                <!-- Ajoutez d'autres détails de la location si nécessaire -->
-                <a href="{{Route('DetailsLocation',['id' => $location->id])}}" class="btn btn-sm btn-primary">Voir les détails</a>
-                @if(\Carbon\Carbon::now()->gt(\Carbon\Carbon::parse($location->DateFin . ' ' . $location->HeureFin))) 
-<a href="{{ route('TerminerLocation', ['id' => $location->id]) }}" class="btn btn-sm btn-danger">Terminer</a>
+  
+           
+@if(\Carbon\Carbon::now()->gt(\Carbon\Carbon::parse($location->DateFin . ' ' . $location->HeureFin))) 
+<form action="{{ route('TerminerLocation', ['id' => $location->id]) }}" method="post" class="d-inline">
+    @csrf
+    <button type="submit" class="btn btn-sm btn-danger">Terminer</button>
+</form>    
  @else 
   <!-- Bouton désactivé car la date de fin n'est pas passée -->
    <button class="btn btn-sm btn-danger" disabled>Terminer</button> 
@@ -52,4 +54,3 @@
 </div>
 @endsection
 
- 

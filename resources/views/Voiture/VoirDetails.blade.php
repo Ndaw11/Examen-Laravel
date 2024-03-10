@@ -90,7 +90,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="add-user-email">Voiture</label>
-            <input type="number" name="voiture_id" value="{{ $voiture->id }}">
+            <input type="number" name="voiture_id" value="{{ $voiture->id }}" >
         </div>
             <div class="mb-3">
                 <label class="form-label" for="add-user-contact">Téléphone</label>

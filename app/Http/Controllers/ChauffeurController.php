@@ -60,4 +60,45 @@ class ChauffeurController extends Controller
     // Redirection avec un message de succès
     return redirect()->back()->with('reussi', 'Enregistrement réussi pour le chauffeur !');
 }
+
+public function PageModifierChauffeur($id)
+{
+  $chauffeur = Chauffeur::findOrFail($id);
+return view('Chauffeur.ModifierChauffeur', compact('chauffeur'));
+}
+
+public function ModifierChauffeur(Request $request, $id)
+{
+    $request->validate([
+        'Prenom' => 'required',
+        'Nom' => 'required',
+        'Experience' => 'required|integer',
+        'NPermit' => 'required|unique:chauffeurs,NPermit,' . $id,
+        'DateEmission' => 'required|date',
+        'DateExpiration' => 'required|date',
+        'Categorie' => 'required',
+        'DateEmbauche' => 'required|date',
+        'DateFinEmbauche' => 'nullable|date',
+        'Salaire' => 'required|integer',
+    ]);
+
+    $chauffeur = Chauffeur::findOrFail($id);
+
+    $chauffeur->update([
+        'Prenom' => $request->input('Prenom'),
+        'Nom' => $request->input('Nom'),
+        'Experience' => $request->input('Experience'),
+        'NPermit' => $request->input('NPermit'),
+        'DateEmission' => $request->input('DateEmission'),
+        'DateExpiration' => $request->input('DateExpiration'),
+        'Categorie' => $request->input('Categorie'),
+        'DateEmbauche' => $request->input('DateEmbauche'),
+        'DateFinEmbauche' => $request->input('DateFinEmbauche'),
+        'Salaire' => $request->input('Salaire'),
+        // Ajoutez les autres champs du formulaire
+    ]);
+
+    return redirect()->route('GestionChauffeur');
+}
+
 }

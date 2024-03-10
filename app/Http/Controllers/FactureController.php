@@ -9,7 +9,7 @@ use App\Models\Location;
 use App\Models\Chauffeur;
 use Illuminate\Http\Request;
 use App\Models\foreignkClient;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class FactureController extends Controller
 {
     public function index()
@@ -60,30 +60,12 @@ public function ImprimerFacture($id)
     $facture->client = $client;
     $facture->chauffeur = $chauffeur;
 
-    // $view = view('Facture.ExporterFacture', compact('facture'));
-
-    // $pdf = \PDF::loadHtml($view)->setPaper('a4')->setOrientation('portrait');
-
-    // return $pdf->stream('facture.pdf');
-
-    // $pdf = \PDF::loadView('Facture.ExporterFacture', compact('facture'));
+     $pdf = PDF::loadView('Facture.ExporterFacture', compact('facture'));
 
     // // Téléchargez le PDF
-    // return $pdf->stream('facture.pdf');
+     return $pdf->download('facture.pdf');
 
-    try {
-      // Générer la vue PDF
-      $pdf = \PDF::loadView('Facture.ExporterFacture', compact('facture'));
-      
-      // Afficher le PDF dans le navigateur
-      return $pdf->stream('facture.pdf');
-  } catch (\Exception $e) {
-      // Enregistrez l'exception dans les journaux
-      \Illuminate\Support\Facades\Log::error($e);
-      
-      // Renvoyez une réponse appropriée à l'utilisateur, par exemple une page d'erreur
-      return response()->view('errors.pdf', ['error' => $e->getMessage()], 500);
-  }
+  
 }
 
 }

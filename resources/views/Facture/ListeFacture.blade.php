@@ -34,7 +34,7 @@
                     <p>Marque voiture: {{ $facture->voiture->Marque }}</p>
                     <p>Modele voiture : {{ $facture->voiture->Model }}</p>
 
-                <a href="{{ route('ImprimerFacture', ['id' => $facture->id]) }}" class="btn btn-sm btn-primary" target="_blank">Imprimer</a>
+                <a href="{{ route('ImprimerFacture', ['id' => $facture->id]) }}" class="btn btn-sm btn-primary">Imprimer</a>
             </div>
         </div>
     </div>

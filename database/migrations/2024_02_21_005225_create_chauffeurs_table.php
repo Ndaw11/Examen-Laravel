@@ -24,6 +24,7 @@ return new class extends Migration
             $table->date('DateFinEmbauche'); // Si la date de fin d'embauche peut être nulle
             $table->integer('Salaire'); // Changer la précision selon vos besoins
             $table->boolean('Occuper')->default(false);
+            $table->boolean('Supprimer')->default(false);
             $table->timestamps();
         });
     }

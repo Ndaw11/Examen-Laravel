@@ -2,10 +2,10 @@
   <!-- Masquer la marque de l'application si la barre de navigation est pleine (navbar-full) -->
   <div class="app-brand demo">
       <a href="{{ url('/') }}" class="app-brand-link">
-          <span class="app-brand-logo demo me-1">
-             rgerg
+          <span class="app-brand-logo demo me-1 mt-4">
+           <h2> CARSERVICE</h2>
           </span>
-          <span class="app-brand-text demo menu-text fw-semibold ms-2">{{ config('variables.templateName') }}</span>
+          {{-- <span class="app-brand-text demo menu-text fw-semibold ms-2">{{ config('variables.templateName') }}</span> --}}
       </a>
 
       <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">

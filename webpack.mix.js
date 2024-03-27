@@ -115,6 +115,11 @@ mixAssetsDir('vendor/fonts/*/*', (src, dest) => mix.copy(src, dest));
 mixAssetsDir('vendor/fonts/!(_)*.scss', (src, dest) =>
   mix.sass(src, dest.replace(/(\\|\/)scss(\\|\/)/, '$1css$2').replace(/\.scss$/, '.css'), { sassOptions })
 );
+// Compile le fichier scss principal de votre application
+mix.sass('resources/sass/app.scss', 'public/css');
+
+// Compile le fichier JavaScript principal de votre application
+mix.js('resources/js/app.js', 'public/js');
 
 /*
  |--------------------------------------------------------------------------

@@ -101,4 +101,23 @@ public function ModifierChauffeur(Request $request, $id)
     return redirect()->route('GestionChauffeur');
 }
 
+public function SupprimerChauffeur($id)
+{
+    // Trouvez le chauffeur par son ID
+    $chauffeur = Chauffeur::findOrFail($id);
+    $chauffeur->update(['Supprimer' => true]);
+
+    // Redirigez l'utilisateur ou effectuez d'autres actions nécessaires
+    return redirect()->route('GestionChauffeur')->with('success', 'Chauffeur supprimé avec succès');
+}
+
+public function ChauffeurSupprimer()
+{
+    // Trouvez les chauffeurs marqués comme supprimés
+    $chauffeurs = Chauffeur::where('Supprimer', true)->get();
+
+    // Redirigez l'utilisateur ou effectuez d'autres actions nécessaires
+    return view('Chauffeur.ChauffeurSupprimer', compact('chauffeurs'));
+}
+
 }

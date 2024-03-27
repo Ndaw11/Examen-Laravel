@@ -88,7 +88,7 @@
                 <label class="form-label" for="add-user-email">Email</label>
                 <input type="email" id="add-user-email" class="form-control" placeholder="Email" aria-label="Email" name="Email" required/>
             </div>
-            <div class="mb-3">
+            <div class="mb-3" style="display: none;">
                 <label class="form-label" for="add-user-email">Voiture</label>
             <input type="number" name="voiture_id" value="{{ $voiture->id }}" >
         </div>
@@ -138,11 +138,6 @@
     <select class="form-select" id="add-chauffeur" name="id_chauffeur" required>
         <!-- Remplacez les options par la liste réelle des chauffeurs -->
         <option value="" selected disabled>Sélectionner un chauffeur</option>
-        {{-- @foreach($chauffeurs as $chauffeur)
-            @if(\Carbon\Carbon::now()->lte($chauffeur->DateExpiration)) <!-- Vérifiez si la date d'expiration n'est pas encore passée -->
-                <option value="{{ $chauffeur->id }}">{{ $chauffeur->Prenom }} {{ $chauffeur->Nom }}</option>
-            @endif
-        @endforeach --}}
         @foreach($chauffeurs as $chauffeur)
         @php
             $expirationPassee = \Carbon\Carbon::now()->gt(\Carbon\Carbon::parse($chauffeur->DateExpiration));

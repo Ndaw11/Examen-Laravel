@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('Prenom');
             $table->string('Nom');
             $table->integer('Experience');
-            $table->string('NPermit')->unique();
+            $table->string('NPermit',9)->unique();
             $table->date('DateEmission');
             $table->date('DateExpiration');
             $table->string('Categorie');
